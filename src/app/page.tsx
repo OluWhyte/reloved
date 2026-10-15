@@ -7,10 +7,11 @@ import { api } from "@/lib/api";
 import { CATEGORIES, type Listing } from "@/lib/types";
 
 function statusBadge(s: Listing["status"]) {
-  if (s === "available") return "bg-emerald-100 text-emerald-800";
-  if (s === "locked") return "bg-amber-100 text-amber-800";
-  if (s === "in_transit") return "bg-sky-100 text-sky-800";
-  return "bg-stone-200 text-stone-700";
+  // Monochrome ramp: light -> dark as the item progresses.
+  if (s === "available") return "bg-stone-100 text-stone-700";
+  if (s === "locked") return "bg-stone-300 text-stone-900";
+  if (s === "in_transit") return "bg-stone-700 text-white";
+  return "bg-stone-900 text-white";
 }
 
 export default function HomePage() {
@@ -55,7 +56,7 @@ export default function HomePage() {
       <section className="card overflow-hidden">
         <div className="grid gap-6 p-6 sm:grid-cols-2 sm:p-10">
           <div className="space-y-4">
-            <p className="badge bg-emerald-100 text-emerald-800">
+            <p className="badge bg-stone-900 text-white">
               {storyCount}+ thank-you stories shared
             </p>
             <h1 className="text-3xl font-black leading-tight sm:text-5xl">
@@ -75,11 +76,11 @@ export default function HomePage() {
             </div>
             {!user && (
               <p className="text-sm text-stone-500">
-                <Link href="/signup" className="font-semibold text-emerald-700 underline">
+                <Link href="/signup" className="font-semibold text-stone-900 underline">
                   Sign up
                 </Link>{" "}
                 or{" "}
-                <Link href="/signin" className="font-semibold text-emerald-700 underline">
+                <Link href="/signin" className="font-semibold text-stone-900 underline">
                   sign in
                 </Link>{" "}
                 to list and claim.
@@ -94,7 +95,7 @@ export default function HomePage() {
               ["4", "Confirm delivery → donor +1 point"],
             ].map(([n, t]) => (
               <div key={n} className="rounded-xl bg-stone-50 p-4">
-                <div className="text-2xl font-black text-emerald-600">{n}</div>
+                <div className="text-2xl font-black text-stone-900">{n}</div>
                 <div className="mt-1 font-medium text-stone-700">{t}</div>
               </div>
             ))}
@@ -127,7 +128,7 @@ export default function HomePage() {
       <section className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
         {filtered.map((i) => (
           <Link key={i.id} href={`/items/${i.id}`} className="card card-tile overflow-hidden hover:shadow-md">
-            <div className="grid h-36 place-items-center bg-gradient-to-br from-emerald-100 to-amber-100 text-5xl">
+            <div className="grid h-36 place-items-center bg-gradient-to-br from-stone-200 to-stone-100 text-5xl">
               {i.photos[0] ? (
                 // eslint-disable-next-line @next/next/no-img-element
                 <img src={i.photos[0]} alt={i.title} className="h-full w-full object-cover" />
@@ -157,7 +158,7 @@ export default function HomePage() {
         {items !== null && filtered.length === 0 && (
           <div className="card p-10 text-center text-stone-500 sm:col-span-3">
             No items match. Be the first to{" "}
-            <Link href="/list" className="font-semibold text-emerald-700 underline">
+            <Link href="/list" className="font-semibold text-stone-900 underline">
               list one
             </Link>
             .

@@ -6,6 +6,7 @@ import Link from "next/link";
 import { useAuth } from "@/lib/auth-api";
 import { api } from "@/lib/api";
 import { CATEGORIES, type Listing, type SelectionMethod } from "@/lib/types";
+import { STORY_LABEL } from "@/lib/brand";
 
 export default function ListPage() {
   const { user } = useAuth();
@@ -33,7 +34,7 @@ export default function ListPage() {
     if (title.trim().length < 4) return setErr("Give your item a clear title.");
     if (description.trim().length < 10) return setErr("Add a short description (10+ chars).");
     if (!location.trim()) return setErr("Add pickup location (area + city).");
-    if (!originStory.trim()) return setErr("Share a quick Reloved Memory origin story.");
+    if (!originStory.trim()) return setErr(`Share a quick ${STORY_LABEL} origin story.`);
     try {
       const { item } = await api.createListing({
         donorId: user?.id,
@@ -74,7 +75,7 @@ export default function ListPage() {
         <p className="text-xs text-stone-500">
           Claims and delivery updates reach you via the phone number on the listing — admin will
           call/WhatsApp you.{" "}
-          <Link href="/signup" className="font-semibold text-emerald-700 underline">Create an account</Link>{" "}
+          <Link href="/signup" className="font-semibold text-stone-900 underline">Create an account</Link>{" "}
           next time to earn +1 karma per delivery and track everything in one dashboard.
         </p>
       </div>
@@ -89,13 +90,13 @@ export default function ListPage() {
           $0 cost to you as donor. No account needed — just tell us how to reach you for pickup.
         </p>
         {!user && (
-          <div className="rounded-xl bg-emerald-50 p-3 text-sm text-emerald-800">
+          <div className="rounded-xl bg-stone-100 p-3 text-sm text-stone-700">
             Listing as a guest — leave your contact details below.{" "}
             <Link href="/signup" className="font-semibold underline">Sign up</Link> instead to earn
             +1 karma per delivery and track claims in a dashboard.
           </div>
         )}
-        {err && <div className="rounded-lg bg-red-50 px-3 py-2 text-sm text-red-700">{err}</div>}
+        {err && <div className="rounded-lg bg-stone-900 px-3 py-2 text-sm font-medium text-white">{err}</div>}
         <form onSubmit={submit} className="space-y-3">
           {!user && (
             <div className="grid gap-3 sm:grid-cols-2">
@@ -112,14 +113,14 @@ export default function ListPage() {
             </select>
             <input className="input" placeholder="Location e.g. Lekki Phase 1, Lagos" value={location} onChange={(e) => setLocation(e.target.value)} />
           </div>
-          <textarea className="input min-h-20" placeholder="Reloved Memory — origin story e.g. Bought when my daughter was born…" value={originStory} onChange={(e) => setOriginStory(e.target.value)} />
+          <textarea className="input min-h-20" placeholder={`${STORY_LABEL} — origin story e.g. Bought when my daughter was born…`} value={originStory} onChange={(e) => setOriginStory(e.target.value)} />
           <input className="input" placeholder="Photo URL (optional — paste image link)" value={photoUrl} onChange={(e) => setPhotoUrl(e.target.value)} />
           <div className="grid gap-3 sm:grid-cols-2">
-            <button type="button" onClick={() => setSelectionMethod("fcfs")} className={`rounded-none border p-4 text-left ${selectionMethod === "fcfs" ? "border-emerald-600 bg-emerald-50" : "border-stone-200 bg-white"}`}>
+            <button type="button" onClick={() => setSelectionMethod("fcfs")} className={`rounded-none border p-4 text-left ${selectionMethod === "fcfs" ? "border-stone-900 bg-stone-100" : "border-stone-200 bg-white"}`}>
               <div className="font-bold">Option A — First Come, First Served</div>
               <div className="text-sm text-stone-500">Auto-lock for the very first applicant.</div>
             </button>
-            <button type="button" onClick={() => setSelectionMethod("manual")} className={`rounded-none border p-4 text-left ${selectionMethod === "manual" ? "border-emerald-600 bg-emerald-50" : "border-stone-200 bg-white"}`}>
+            <button type="button" onClick={() => setSelectionMethod("manual")} className={`rounded-none border p-4 text-left ${selectionMethod === "manual" ? "border-stone-900 bg-stone-100" : "border-stone-200 bg-white"}`}>
               <div className="font-bold">Option B — Manual Selection</div>
               <div className="text-sm text-stone-500">You review applicants and pick. Defaults to first if you don&apos;t pick.</div>
             </button>

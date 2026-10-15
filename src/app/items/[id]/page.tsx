@@ -6,6 +6,7 @@ import { useParams, useRouter } from "next/navigation";
 import { useAuth } from "@/lib/auth-api";
 import { api } from "@/lib/api";
 import type { Claim, Listing } from "@/lib/types";
+import { STORY_LABEL } from "@/lib/brand";
 import { distanceToFee, formatNaira } from "@/lib/delivery";
 
 export default function ItemPage() {
@@ -77,7 +78,7 @@ function ItemDetail() {
   return (
     <div className="grid gap-6 lg:grid-cols-3">
       <div className="card overflow-hidden lg:col-span-2">
-        <div className="grid h-56 place-items-center bg-gradient-to-br from-emerald-100 to-amber-100 text-7xl">
+        <div className="grid h-56 place-items-center bg-gradient-to-br from-stone-200 to-stone-100 text-7xl">
           {item.photos[0] ? (
             // eslint-disable-next-line @next/next/no-img-element
             <img src={item.photos[0]} alt={item.title} className="h-full w-full object-cover" />
@@ -87,29 +88,29 @@ function ItemDetail() {
           <div className="flex flex-wrap gap-2 text-xs">
             <span className="badge bg-stone-900 text-white">{item.status.replace("_", " ")}</span>
             <span className="badge bg-stone-100 text-stone-600">{item.category}</span>
-            <span className="badge bg-emerald-100 text-emerald-800">
+            <span className="badge bg-stone-100 text-stone-700">
               {item.selectionMethod === "fcfs" ? "FCFS auto-lock" : "Manual pick"}
             </span>
           </div>
           <h1 className="text-2xl font-black">{item.title}</h1>
           <p className="text-sm text-stone-500">{item.location} · by {item.donorName}</p>
           <p className="text-stone-700">{item.description}</p>
-          <div className="rounded-xl bg-amber-50 p-4 text-sm">
-            <div className="font-bold">Reloved Memory</div>
+          <div className="rounded-xl bg-stone-100 p-4 text-sm">
+            <div className="font-bold">{STORY_LABEL}</div>
             <div className="italic text-stone-600">&ldquo;{item.originStory}&rdquo;</div>
           </div>
-          {item.lockedByName && <p className="text-sm font-semibold text-amber-700">Locked for {item.lockedByName}</p>}
+          {item.lockedByName && <p className="text-sm font-semibold text-stone-700">Locked for {item.lockedByName}</p>}
         </div>
       </div>
       <div className="card h-fit space-y-4 p-6">
         <h2 className="text-lg font-black">Step 2 — I Want This</h2>
-        {msg && <div className="rounded-lg bg-emerald-50 px-3 py-2 text-sm text-emerald-800">{msg}</div>}
+        {msg && <div className="rounded-lg bg-stone-100 px-3 py-2 text-sm font-medium text-stone-800">{msg}</div>}
         <div className="grid gap-2">
-          <button onClick={() => setMethod("pickup")} className={`rounded-none border p-3 text-left text-sm ${method === "pickup" ? "border-emerald-600 bg-emerald-50" : "border-stone-200"}`}>
+          <button onClick={() => setMethod("pickup")} className={`rounded-none border p-3 text-left text-sm ${method === "pickup" ? "border-stone-900 bg-stone-100" : "border-stone-200"}`}>
             <b>Self-Pickup — Free</b>
             <div className="text-stone-500">Verified Safe Spot meetup.</div>
           </button>
-          <button onClick={() => setMethod("courier")} className={`rounded-none border p-3 text-left text-sm ${method === "courier" ? "border-emerald-600 bg-emerald-50" : "border-stone-200"}`}>
+          <button onClick={() => setMethod("courier")} className={`rounded-none border p-3 text-left text-sm ${method === "courier" ? "border-stone-900 bg-stone-100" : "border-stone-200"}`}>
             <b>Courier — Paid by you</b>
             <div className="text-stone-500">₦0 cost to donor.</div>
           </button>

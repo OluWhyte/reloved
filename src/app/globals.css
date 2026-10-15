@@ -1,19 +1,34 @@
 @import "tailwindcss";
 
+/* ============================================================
+   THEME — single source of truth for app colors.
+   Monochrome palette (black / white / grays). To rebrand,
+   edit these variables only; every component reads them.
+   ============================================================ */
 :root {
-  --background: #fafaf9;
-  --foreground: #1c1917;
+  --bg: #fafaf9; /* app background */
+  --surface: #ffffff; /* cards / panels */
+  --text: #1c1917; /* primary text */
+  --text-muted: #57534e; /* secondary text */
+  --border: #e7e5e4; /* card borders */
+  --border-strong: #d6d3d1; /* inputs, ghost buttons */
+  --btn-bg: #1c1917; /* primary + dark button */
+  --btn-bg-hover: #000000;
+  --btn-secondary-bg: #44403c; /* secondary (btn-dark) */
+  --btn-secondary-bg-hover: #292524;
+  --btn-fg: #ffffff;
+  --focus: #1c1917; /* focus ring */
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
+  background: var(--bg);
+  color: var(--text);
   font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
 }
 
 .card {
-  background: #fff;
-  border: 1px solid #e7e5e4;
+  background: var(--surface);
+  border: 1px solid var(--border);
   border-radius: 1rem;
   box-shadow: 0 1px 2px rgb(0 0 0 / 0.04);
 }
@@ -25,40 +40,43 @@ body {
 
 .input {
   width: 100%;
-  border: 1px solid #d6d3d1;
+  border: 1px solid var(--border-strong);
   border-radius: 0.65rem;
   padding: 0.65rem 0.8rem;
-  background: #fff;
+  background: var(--surface);
   font-size: 0.95rem;
 }
 .input:focus {
-  outline: 2px solid #059669;
-  border-color: #059669;
+  outline: 2px solid var(--focus);
+  border-color: var(--focus);
 }
 
 .btn-primary {
-  background: #059669;
-  color: #fff;
+  background: var(--btn-bg);
+  color: var(--btn-fg);
   font-weight: 700;
   border-radius: 0;
   padding: 0.7rem 1.1rem;
 }
 .btn-primary:hover {
-  background: #047857;
+  background: var(--btn-bg-hover);
 }
 .btn-dark {
-  background: #1c1917;
-  color: #fff;
+  background: var(--btn-secondary-bg);
+  color: var(--btn-fg);
   font-weight: 700;
   border-radius: 0;
   padding: 0.7rem 1.1rem;
 }
+.btn-dark:hover {
+  background: var(--btn-secondary-bg-hover);
+}
 .btn-ghost {
-  border: 1px solid #d6d3d1;
+  border: 1px solid var(--border-strong);
   border-radius: 0;
   padding: 0.7rem 1.1rem;
   font-weight: 600;
-  background: #fff;
+  background: var(--surface);
 }
 .badge {
   display: inline-flex;

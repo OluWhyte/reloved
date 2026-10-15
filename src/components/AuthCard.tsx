@@ -4,6 +4,7 @@ import { useState } from "react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useAuth } from "@/lib/auth-api";
+import { BRAND_NAME } from "@/lib/brand";
 
 export function AuthCard({
   mode,
@@ -38,7 +39,7 @@ export function AuthCard({
     <div className="mx-auto max-w-md">
       <div className="card space-y-4 p-6 sm:p-8">
         <h1 className="text-2xl font-black">
-          {mode === "signup" ? "Create your Reloved account" : "Welcome back"}
+          {mode === "signup" ? `Create your ${BRAND_NAME} account` : "Welcome back"}
         </h1>
         <p className="text-sm text-stone-500">
           {mode === "signup"
@@ -46,7 +47,7 @@ export function AuthCard({
             : "Sign in to manage listings, claims and your karma points."}
         </p>
         {err && (
-          <div className="rounded-lg bg-red-50 px-3 py-2 text-sm font-medium text-red-700">
+          <div className="rounded-lg bg-stone-900 px-3 py-2 text-sm font-medium text-white">
             {err}
           </div>
         )}
@@ -89,14 +90,14 @@ export function AuthCard({
           {mode === "signup" ? (
             <>
               Have an account?{" "}
-              <Link href="/signin" className="font-semibold text-emerald-700 underline">
+              <Link href="/signin" className="font-semibold text-stone-900 underline">
                 Sign in
               </Link>
             </>
           ) : (
             <>
               New here?{" "}
-              <Link href="/signup" className="font-semibold text-emerald-700 underline">
+              <Link href="/signup" className="font-semibold text-stone-900 underline">
                 Create account
               </Link>
             </>

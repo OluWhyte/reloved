@@ -31,7 +31,7 @@ export function MyListings({ listings, claims, onPick }: {
                 {!l.lockedClaimId && l.selectionMethod === "manual" && (
                   <button onClick={() => pick(c.id)} className="rounded-none bg-stone-900 px-2 py-1 text-xs text-white">Pick</button>
                 )}
-                {l.lockedClaimId === c.id && <span className="text-xs font-bold text-emerald-700">CHOSEN</span>}
+                {l.lockedClaimId === c.id && <span className="text-xs font-bold text-stone-900">CHOSEN</span>}
               </div>
             ))}
           </div>

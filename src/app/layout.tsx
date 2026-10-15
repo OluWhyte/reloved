@@ -1,10 +1,11 @@
 import type { Metadata } from "next";
 import { AuthProvider } from "@/lib/auth-api";
+import { BRAND_NAME } from "@/lib/brand";
 import Navbar from "@/components/Navbar";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "Reloved — Give What You Don't Need",
+  title: `${BRAND_NAME} — Give What You Don't Need`,
   description:
     "List pre-loved items, claim what you need, earn karma points, share thank-you stories.",
 };
@@ -23,7 +24,7 @@ export default function RootLayout({
             {children}
           </main>
           <footer className="border-t border-stone-200 bg-white py-8 text-center text-sm text-stone-500">
-            Reloved — zero delivery cost to donors. Recipients cover courier or pick up free at Safe Spots.
+            {BRAND_NAME} — zero delivery cost to donors. Recipients cover courier or pick up free at Safe Spots.
           </footer>
         </AuthProvider>
       </body>

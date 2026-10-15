@@ -44,7 +44,7 @@ export default function ImpactPage() {
       </div>
       <div className="card space-y-3 p-5">
         <h2 className="font-black">Share your thank-you story</h2>
-        {err && <div className="rounded-lg bg-red-50 px-3 py-2 text-sm text-red-700">{err}</div>}
+        {err && <div className="rounded-lg bg-stone-900 px-3 py-2 text-sm font-medium text-white">{err}</div>}
         <form onSubmit={share} className="grid gap-2">
           <input className="input" placeholder="Item received e.g. Baby Cot" value={title} onChange={(e) => setTitle(e.target.value)} />
           <textarea className="input min-h-20" placeholder="Thank-you note…" value={note} onChange={(e) => setNote(e.target.value)} />
@@ -54,7 +54,7 @@ export default function ImpactPage() {
       <div className="grid gap-4 sm:grid-cols-2">
         {(stories ?? []).map((s) => (
           <div key={s.id} className="card space-y-2 p-5">
-            <div className="text-xs font-bold text-emerald-700">{s.listingTitle}</div>
+            <div className="text-xs font-bold text-stone-900">{s.listingTitle}</div>
             <p className="text-stone-700">“{s.note}”</p>
             <p className="text-sm text-stone-500">— {s.recipientName}, thanks to {s.donorName}</p>
           </div>
