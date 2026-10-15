@@ -26,14 +26,14 @@ export default function Navbar() {
           <Link href="/impact" className="rounded-lg px-3 py-2 hover:bg-stone-100">
             Impact Wall
           </Link>
+          <Link
+            href="/list"
+            className="rounded-lg bg-stone-900 px-3 py-2 text-white hover:bg-stone-700"
+          >
+            + List item
+          </Link>
           {user ? (
             <>
-              <Link
-                href="/list"
-                className="rounded-lg bg-stone-900 px-3 py-2 text-white hover:bg-stone-700"
-              >
-                + List item
-              </Link>
               <Link href="/dashboard" className="rounded-lg px-3 py-2 hover:bg-stone-100">
                 Dashboard
               </Link>

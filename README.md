@@ -2,7 +2,7 @@
 
 **Give what you don't need. Relove what you find.**
 
-Reloved is a donor-to-recipient rehoming platform. Donors list pre-loved items for free, recipients claim what they need and cover courier delivery (or pick up free at a Safe Spot), an admin dispatches the courier, and once delivery is confirmed the donor earns **+1 karma point** and the recipient can post a thank-you story to the **Impact Wall**.
+Reloved is a donor-to-recipient rehoming platform. Donors list pre-loved items for free â€” **no account needed**, guests just leave a name and phone number on the listing â€” recipients claim what they need and cover courier delivery (or pick up free at a Safe Spot), an admin dispatches the courier, and once delivery is confirmed a registered donor earns **+1 karma point** and the recipient can post a thank-you story to the **Impact Wall**.
 
 Built with **Next.js 16 (App Router) + TypeScript + Tailwind CSS 4**, and delivered as a **REST API** (`/api/*` route handlers) that the UI consumes through a typed client.
 
@@ -27,8 +27,8 @@ Built with **Next.js 16 (App Router) + TypeScript + Tailwind CSS 4**, and delive
 ```
  Donor                     Reloved API                    Recipient / Admin
  ------                    ----------                    -----------------
- 1. Sign up ------------> POST /api/auth/signup
- 2. List item ----------> POST /api/listings
+  1. List item ----------> POST /api/listings   (account optional - guests just leave a phone)
+  2. Sign up (optional) -> POST /api/auth/signup   (to earn karma + track claims)
                            (choose FCFS or manual pick)
                                                         3. "I Want This" -> POST /api/claims
                                                            FCFS => auto-locked
@@ -84,8 +84,8 @@ npm start
 ### Try the demo flow
 
 1. Open `http://localhost:3000` - seeded listings (sofa, books, baby cot) appear.
-2. **Sign up** two accounts in two browser profiles (one as donor, one as recipient).
-3. As donor: **+ List item**, choose *First Come, First Served* or *Manual Selection*.
+2. As donor: **+ List item** â€” sign up first to earn karma, or list as a **guest** (name + phone on the listing); choose *First Come, First Served* or *Manual Selection*.
+3. **Sign up** a recipient account in a second browser profile.
 4. As recipient: open the item, **I Want This** (pickup = free, courier = pay the distance fee).
 5. **Dashboard** shows the claim - pay fee / confirm pickup / confirm receipt.
 6. **Admin** page shows the dispatch queue - dispatch the courier.
@@ -159,7 +159,7 @@ curl -X POST http://localhost:3000/api/auth/signup \
 | Method | Path | Auth | Description |
 | --- | --- | --- | --- |
 | GET | `/api/listings?q=&category=` | - | Browse; filter by search text and category |
-| POST | `/api/listings` | - | Create listing -> 201 `{ item }` |
+| POST | `/api/listings` | - | Create listing -> 201 `{ item }`. Body needs `donorId` (account) **or** guest contact: `donorName` + `donorPhone` (`donorEmail?`) |
 | GET | `/api/listings/:id` | - | Single listing -> `{ item }` (404 if missing) |
 
 ### Claims
@@ -204,7 +204,7 @@ curl -X POST http://localhost:3000/api/auth/signup \
 Shared TypeScript types live in `src/lib/types.ts`.
 
 - **User** - `id, name, email, password, phone?, karmaPoints, createdAt`
-- **Listing** - `id, donorId, donorName, title, description, category, location, originStory, photos[], selectionMethod (fcfs|manual), status, lockedClaimId?, lockedByName?, deliveryCode, createdAt`
+- **Listing** - `id, donorId?, donorName, donorPhone?, donorEmail?, title, description, category, location, originStory, photos[], selectionMethod (fcfs|manual), status, lockedClaimId?, lockedByName?, deliveryCode, createdAt` (guest listings have no `donorId` â€” contact travels on the listing)
 - **Claim** - `id, listingId, recipientId, recipientName, deliveryMethod (pickup|courier), fee, distanceKm, status, isChosen, createdAt`
 - **ThankStory** - `id, listingId, listingTitle, donorName, recipientName, note, photo, createdAt`
 

@@ -8,12 +8,13 @@ export async function GET() {
     .filter((c) => ["locked", "paid", "pickup_confirmed"].includes(c.status))
     .map((c) => {
       const listing = store.listings.find((l) => l.id === c.listingId);
-      const donor = listing ? store.users.find((u) => u.id === listing.donorId) : undefined;
+      const donor = listing?.donorId ? store.users.find((u) => u.id === listing.donorId) : undefined;
       return {
         claim: c,
         listingId: c.listingId,
         listingTitle: listing?.title ?? "Item",
-        donorPhone: donor?.phone ?? "no phone saved",
+        // Registered donor's account phone, or the contact number left on a guest listing.
+        donorPhone: donor?.phone ?? listing?.donorPhone ?? "no phone saved",
       };
     });
   return NextResponse.json({ queue });

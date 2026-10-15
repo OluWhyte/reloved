@@ -66,7 +66,7 @@ export default function HomePage() {
               confirm & donor earns <b>+1 karma point</b> → thank-you story on the Impact Wall.
             </p>
             <div className="flex flex-wrap gap-3">
-              <Link href={user ? "/list" : "/signup"} className="btn-primary">
+              <Link href="/list" className="btn-primary">
                 List an item — free
               </Link>
               <Link href="/impact" className="btn-ghost">

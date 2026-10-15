@@ -4,17 +4,24 @@ import { db } from "@/server/db";
 import { makeDeliveryCode, uid } from "@/lib/delivery";
 import { CATEGORIES } from "@/lib/types";
 
-const Schema = z.object({
-  donorId: z.string().min(1),
-  donorName: z.string().min(1),
-  title: z.string().min(4),
-  description: z.string().min(10),
-  category: z.enum(CATEGORIES as unknown as [string, ...string[]]),
-  location: z.string().min(2),
-  originStory: z.string().min(4),
-  photos: z.array(z.string()).default([]),
-  selectionMethod: z.enum(["fcfs", "manual"]),
-});
+// A listing needs EITHER a registered donor (donorId) OR guest contact details (donorPhone).
+const Schema = z
+  .object({
+    donorId: z.string().min(1).optional(),
+    donorName: z.string().min(1),
+    donorPhone: z.string().min(7).optional(),
+    donorEmail: z.string().email().optional(),
+    title: z.string().min(4),
+    description: z.string().min(10),
+    category: z.enum(CATEGORIES as unknown as [string, ...string[]]),
+    location: z.string().min(2),
+    originStory: z.string().min(4),
+    photos: z.array(z.string()).default([]),
+    selectionMethod: z.enum(["fcfs", "manual"]),
+  })
+  .refine((d) => Boolean(d.donorId) || Boolean(d.donorPhone), {
+    message: "Provide your contact phone to list without an account",
+  });
 
 export async function GET(req: Request) {
   const store = db();

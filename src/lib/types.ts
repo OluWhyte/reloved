@@ -22,8 +22,12 @@ export interface DemoUser {
 
 export interface Listing {
   id: string;
-  donorId: string;
+  /** Registered donors have an account id; guest donors list without signing up. */
+  donorId?: string;
   donorName: string;
+  /** Guest donors provide contact details on the listing itself. */
+  donorPhone?: string;
+  donorEmail?: string;
   title: string;
   description: string;
   category: string;
