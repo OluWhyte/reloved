@@ -10,11 +10,8 @@ export default function Navbar() {
   return (
     <header className="sticky top-0 z-40 border-b border-stone-200 bg-white/90 backdrop-blur">
       <div className="mx-auto flex max-w-6xl items-center justify-between gap-2 px-3 py-2.5 sm:gap-3 sm:px-6 sm:py-3">
-        <Link href="/" className="flex min-w-0 items-center gap-1.5 sm:gap-2" aria-label={`${BRAND_NAME} home`}>
-          <span className="grid h-8 w-8 shrink-0 place-items-center rounded-xl bg-stone-900 text-base font-black text-white sm:h-9 sm:w-9 sm:text-lg">
-            R
-          </span>
-          <span className="truncate text-lg font-extrabold tracking-tight sm:text-xl">
+        <Link href="/" className="flex min-w-0 items-center" aria-label={`${BRAND_NAME} home`}>
+          <span className="truncate text-xl font-black tracking-tight sm:text-2xl">
             {BRAND_NAME}
             <span className="ml-2 hidden rounded-full bg-stone-200 px-2 py-0.5 text-xs font-semibold text-stone-600 lg:inline">
               give · claim · thank

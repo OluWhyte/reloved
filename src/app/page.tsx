@@ -2,7 +2,6 @@
 
 import Link from "next/link";
 import { useEffect, useMemo, useState } from "react";
-import { useAuth } from "@/lib/auth-api";
 import { api } from "@/lib/api";
 import { CATEGORIES, type Listing } from "@/lib/types";
 
@@ -15,7 +14,6 @@ function statusBadge(s: Listing["status"]) {
 }
 
 export default function HomePage() {
-  const { user } = useAuth();
   const [q, setQ] = useState("");
   const [cat, setCat] = useState("All");
   const [items, setItems] = useState<Listing[] | null>(null);
@@ -74,18 +72,6 @@ export default function HomePage() {
                 See Impact Wall
               </Link>
             </div>
-            {!user && (
-              <p className="text-sm text-stone-500">
-                <Link href="/signup" className="font-semibold text-stone-900 underline">
-                  Sign up
-                </Link>{" "}
-                or{" "}
-                <Link href="/signin" className="font-semibold text-stone-900 underline">
-                  sign in
-                </Link>{" "}
-                to list and claim.
-              </p>
-            )}
           </div>
           <div className="grid grid-cols-2 gap-3 text-sm">
             {[
