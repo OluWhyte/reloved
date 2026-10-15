@@ -4,12 +4,13 @@ import Link from "next/link";
 import { useAuth } from "@/lib/auth-api";
 import { BRAND_NAME } from "@/lib/brand";
 
+// Exactly four menu items: logo · Donate · List item · Sign up (Sign out when authed).
 export default function Navbar() {
   const { user, signout } = useAuth();
   return (
     <header className="sticky top-0 z-40 border-b border-stone-200 bg-white/90 backdrop-blur">
       <div className="mx-auto flex max-w-6xl items-center justify-between gap-3 px-4 py-3 sm:px-6">
-        <Link href="/" className="flex items-center gap-2">
+        <Link href="/" className="flex items-center gap-2" aria-label={`${BRAND_NAME} home`}>
           <span className="grid h-9 w-9 place-items-center rounded-xl bg-stone-900 text-lg font-black text-white">
             R
           </span>
@@ -21,52 +22,30 @@ export default function Navbar() {
           </span>
         </Link>
         <nav className="flex items-center gap-2 text-sm font-medium">
-          <Link href="/" className="rounded-none px-3 py-2 hover:bg-stone-100">
-            Browse
-          </Link>
-          <Link href="/impact" className="rounded-none px-3 py-2 hover:bg-stone-100">
-            Impact Wall
+          <Link href="/donate" className="rounded-none px-3 py-2 hover:bg-stone-100">
+            Donate
           </Link>
           <Link
             href="/list"
             className="rounded-none bg-stone-900 px-3 py-2 text-white hover:bg-stone-700"
           >
-            + List item
+            List item
           </Link>
           {user ? (
-            <>
-              <Link href="/dashboard" className="rounded-none px-3 py-2 hover:bg-stone-100">
-                Dashboard
-              </Link>
-              <Link href="/admin" className="rounded-none px-3 py-2 hover:bg-stone-100">
-                Admin
-              </Link>
-              <span className="hidden rounded-full bg-stone-900 px-3 py-1 text-xs font-bold text-white sm:inline">
-                {user.karmaPoints} karma
-              </span>
-              <button
-                onClick={signout}
-                className="rounded-none border border-stone-200 px-3 py-2 hover:bg-stone-100"
-                title={user.email}
-              >
-                Sign out
-              </button>
-            </>
+            <button
+              onClick={signout}
+              className="rounded-none border border-stone-300 px-3 py-2 hover:bg-stone-100"
+              title={user.email}
+            >
+              Sign out
+            </button>
           ) : (
-            <>
-              <Link
-                href="/signin"
-                className="rounded-none border border-stone-200 px-3 py-2 hover:bg-stone-100"
-              >
-                Sign in
-              </Link>
-              <Link
-                href="/signup"
-                className="rounded-none bg-stone-900 px-3 py-2 text-white hover:bg-stone-700"
-              >
-                Sign up free
-              </Link>
-            </>
+            <Link
+              href="/signup"
+              className="rounded-none border border-stone-300 px-3 py-2 hover:bg-stone-100"
+            >
+              Sign up
+            </Link>
           )}
         </nav>
       </div>
