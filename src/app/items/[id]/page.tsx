@@ -105,11 +105,11 @@ function ItemDetail() {
         <h2 className="text-lg font-black">Step 2 — I Want This</h2>
         {msg && <div className="rounded-lg bg-emerald-50 px-3 py-2 text-sm text-emerald-800">{msg}</div>}
         <div className="grid gap-2">
-          <button onClick={() => setMethod("pickup")} className={`rounded-xl border p-3 text-left text-sm ${method === "pickup" ? "border-emerald-600 bg-emerald-50" : "border-stone-200"}`}>
+          <button onClick={() => setMethod("pickup")} className={`rounded-none border p-3 text-left text-sm ${method === "pickup" ? "border-emerald-600 bg-emerald-50" : "border-stone-200"}`}>
             <b>Self-Pickup — Free</b>
             <div className="text-stone-500">Verified Safe Spot meetup.</div>
           </button>
-          <button onClick={() => setMethod("courier")} className={`rounded-xl border p-3 text-left text-sm ${method === "courier" ? "border-emerald-600 bg-emerald-50" : "border-stone-200"}`}>
+          <button onClick={() => setMethod("courier")} className={`rounded-none border p-3 text-left text-sm ${method === "courier" ? "border-emerald-600 bg-emerald-50" : "border-stone-200"}`}>
             <b>Courier — Paid by you</b>
             <div className="text-stone-500">₦0 cost to donor.</div>
           </button>

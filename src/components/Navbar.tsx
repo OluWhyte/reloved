@@ -20,24 +20,24 @@ export default function Navbar() {
           </span>
         </Link>
         <nav className="flex items-center gap-2 text-sm font-medium">
-          <Link href="/" className="rounded-lg px-3 py-2 hover:bg-stone-100">
+          <Link href="/" className="rounded-none px-3 py-2 hover:bg-stone-100">
             Browse
           </Link>
-          <Link href="/impact" className="rounded-lg px-3 py-2 hover:bg-stone-100">
+          <Link href="/impact" className="rounded-none px-3 py-2 hover:bg-stone-100">
             Impact Wall
           </Link>
           <Link
             href="/list"
-            className="rounded-lg bg-stone-900 px-3 py-2 text-white hover:bg-stone-700"
+            className="rounded-none bg-stone-900 px-3 py-2 text-white hover:bg-stone-700"
           >
             + List item
           </Link>
           {user ? (
             <>
-              <Link href="/dashboard" className="rounded-lg px-3 py-2 hover:bg-stone-100">
+              <Link href="/dashboard" className="rounded-none px-3 py-2 hover:bg-stone-100">
                 Dashboard
               </Link>
-              <Link href="/admin" className="rounded-lg px-3 py-2 hover:bg-stone-100">
+              <Link href="/admin" className="rounded-none px-3 py-2 hover:bg-stone-100">
                 Admin
               </Link>
               <span className="hidden rounded-full bg-amber-100 px-3 py-1 text-xs font-bold text-amber-800 sm:inline">
@@ -45,7 +45,7 @@ export default function Navbar() {
               </span>
               <button
                 onClick={signout}
-                className="rounded-lg border border-stone-200 px-3 py-2 hover:bg-stone-100"
+                className="rounded-none border border-stone-200 px-3 py-2 hover:bg-stone-100"
                 title={user.email}
               >
                 Sign out
@@ -55,13 +55,13 @@ export default function Navbar() {
             <>
               <Link
                 href="/signin"
-                className="rounded-lg border border-stone-200 px-3 py-2 hover:bg-stone-100"
+                className="rounded-none border border-stone-200 px-3 py-2 hover:bg-stone-100"
               >
                 Sign in
               </Link>
               <Link
                 href="/signup"
-                className="rounded-lg bg-emerald-600 px-3 py-2 text-white hover:bg-emerald-500"
+                className="rounded-none bg-emerald-600 px-3 py-2 text-white hover:bg-emerald-500"
               >
                 Sign up free
               </Link>

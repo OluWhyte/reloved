@@ -114,7 +114,7 @@ export default function HomePage() {
             <button
               key={c}
               onClick={() => setCat(c)}
-              className={`rounded-full px-3 py-1.5 text-sm font-semibold ${
+              className={`rounded-none px-3 py-1.5 text-sm font-semibold ${
                 cat === c ? "bg-stone-900 text-white" : "bg-white text-stone-700"
               } border border-stone-200`}
             >
@@ -126,7 +126,7 @@ export default function HomePage() {
 
       <section className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
         {filtered.map((i) => (
-          <Link key={i.id} href={`/items/${i.id}`} className="card overflow-hidden hover:shadow-md">
+          <Link key={i.id} href={`/items/${i.id}`} className="card card-tile overflow-hidden hover:shadow-md">
             <div className="grid h-36 place-items-center bg-gradient-to-br from-emerald-100 to-amber-100 text-5xl">
               {i.photos[0] ? (
                 // eslint-disable-next-line @next/next/no-img-element

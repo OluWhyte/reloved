@@ -115,11 +115,11 @@ export default function ListPage() {
           <textarea className="input min-h-20" placeholder="Reloved Memory — origin story e.g. Bought when my daughter was born…" value={originStory} onChange={(e) => setOriginStory(e.target.value)} />
           <input className="input" placeholder="Photo URL (optional — paste image link)" value={photoUrl} onChange={(e) => setPhotoUrl(e.target.value)} />
           <div className="grid gap-3 sm:grid-cols-2">
-            <button type="button" onClick={() => setSelectionMethod("fcfs")} className={`rounded-xl border p-4 text-left ${selectionMethod === "fcfs" ? "border-emerald-600 bg-emerald-50" : "border-stone-200 bg-white"}`}>
+            <button type="button" onClick={() => setSelectionMethod("fcfs")} className={`rounded-none border p-4 text-left ${selectionMethod === "fcfs" ? "border-emerald-600 bg-emerald-50" : "border-stone-200 bg-white"}`}>
               <div className="font-bold">Option A — First Come, First Served</div>
               <div className="text-sm text-stone-500">Auto-lock for the very first applicant.</div>
             </button>
-            <button type="button" onClick={() => setSelectionMethod("manual")} className={`rounded-xl border p-4 text-left ${selectionMethod === "manual" ? "border-emerald-600 bg-emerald-50" : "border-stone-200 bg-white"}`}>
+            <button type="button" onClick={() => setSelectionMethod("manual")} className={`rounded-none border p-4 text-left ${selectionMethod === "manual" ? "border-emerald-600 bg-emerald-50" : "border-stone-200 bg-white"}`}>
               <div className="font-bold">Option B — Manual Selection</div>
               <div className="text-sm text-stone-500">You review applicants and pick. Defaults to first if you don&apos;t pick.</div>
             </button>

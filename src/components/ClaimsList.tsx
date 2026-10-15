@@ -16,7 +16,7 @@ export function ClaimsList({ claims, listings, onPay, onPickup, onReceipt }: {
       {claims.map((c) => {
         const l = listings.find((x) => x.id === c.listingId);
         return (
-          <div key={c.id} className="rounded-xl border border-stone-200 p-3 text-sm">
+          <div key={c.id} className="rounded border border-stone-200 p-3 text-sm">
             <div className="font-bold">{l?.title ?? "Item"}</div>
             <div className="text-stone-500">{c.deliveryMethod} · {c.status.replace("_", " ")}</div>
             <div className="mt-2 flex flex-wrap gap-2">
