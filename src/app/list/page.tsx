@@ -58,10 +58,10 @@ export default function ListPage() {
 
   if (guestItem) {
     return (
-      <div className="card mx-auto max-w-xl space-y-4 p-8 text-center">
+      <div className="card mx-auto max-w-xl space-y-4 p-6 text-center sm:p-8">
         <div className="text-4xl">🎉</div>
         <h1 className="text-2xl font-black">Your listing is live!</h1>
-        <p className="text-sm text-stone-600">
+        <p className="break-words text-sm text-stone-600">
           Recipients can now claim <b>{guestItem.title}</b>. Keep this delivery code — the courier
           needs it at handover:
         </p>

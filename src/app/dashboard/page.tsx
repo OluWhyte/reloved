@@ -40,7 +40,7 @@ export default function DashboardPage() {
   if (!user) return <div className="card p-8 text-center">Sign in first. <Link className="underline" href="/signin">Sign in</Link></div>;
   return (
     <div className="space-y-6">
-      <div className="card flex flex-wrap items-center justify-between gap-3 p-5">
+      <div className="card flex flex-wrap items-center justify-between gap-3 p-4 sm:p-5">
         <div>
           <h1 className="text-xl font-black">Hi {user.name} — {user.karmaPoints} karma</h1>
           <p className="text-sm text-stone-500">Donors earn +1 point per confirmed delivery.</p>

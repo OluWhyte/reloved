@@ -38,11 +38,11 @@ export default function ImpactPage() {
   };
   return (
     <div className="space-y-6">
-      <div className="card p-6">
-        <h1 className="text-2xl font-black">Step 5 — Impact Wall</h1>
-        <p className="text-sm text-stone-500">Recipients post photo + thank-you note. Donors get notified — proof items reach real people.</p>
+      <div className="card p-4 sm:p-6">
+        <h1 className="text-xl font-black sm:text-2xl">Step 5 — Impact Wall</h1>
+        <p className="mt-1 text-sm text-stone-500">Recipients post photo + thank-you note. Donors get notified — proof items reach real people.</p>
       </div>
-      <div className="card space-y-3 p-5">
+      <div className="card space-y-3 p-4 sm:p-5">
         <h2 className="font-black">Share your thank-you story</h2>
         {err && <div className="rounded-lg bg-stone-900 px-3 py-2 text-sm font-medium text-white">{err}</div>}
         <form onSubmit={share} className="grid gap-2">
@@ -51,12 +51,12 @@ export default function ImpactPage() {
           <button className="btn-primary w-fit" type="submit">Post to Impact Wall</button>
         </form>
       </div>
-      <div className="grid gap-4 sm:grid-cols-2">
+      <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
         {(stories ?? []).map((s) => (
-          <div key={s.id} className="card space-y-2 p-5">
-            <div className="text-xs font-bold text-stone-900">{s.listingTitle}</div>
-            <p className="text-stone-700">“{s.note}”</p>
-            <p className="text-sm text-stone-500">— {s.recipientName}, thanks to {s.donorName}</p>
+          <div key={s.id} className="card space-y-2 p-4 sm:p-5">
+            <div className="break-words text-xs font-bold text-stone-900">{s.listingTitle}</div>
+            <p className="break-words text-stone-700">“{s.note}”</p>
+            <p className="break-words text-sm text-stone-500">— {s.recipientName}, thanks to {s.donorName}</p>
           </div>
         ))}
       </div>

@@ -5,9 +5,9 @@ import { BRAND_NAME } from "@/lib/brand";
 export default function DonatePage() {
   return (
     <div className="mx-auto max-w-xl">
-      <div className="card space-y-4 p-8 text-center">
+      <div className="card space-y-4 p-6 text-center sm:p-8">
         <div className="text-4xl">💛</div>
-        <h1 className="text-2xl font-black">Support {BRAND_NAME}</h1>
+        <h1 className="break-words text-2xl font-black">Support {BRAND_NAME}</h1>
         <p className="text-sm text-stone-600">
           Give to help us keep listing free for donors and cover platform running costs.
           Every gift keeps items moving from people who have too much to people who need them.

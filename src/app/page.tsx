@@ -59,7 +59,7 @@ export default function HomePage() {
             <p className="badge bg-stone-900 text-white">
               {storyCount}+ thank-you stories shared
             </p>
-            <h1 className="text-3xl font-black leading-tight sm:text-5xl">
+            <h1 className="text-3xl font-black leading-tight sm:text-4xl lg:text-5xl">
               Give what you don&apos;t need. Relove what you find.
             </h1>
             <p className="text-stone-600">
@@ -94,8 +94,8 @@ export default function HomePage() {
               ["3", "Admin calls donor, dispatches courier"],
               ["4", "Confirm delivery → donor +1 point"],
             ].map(([n, t]) => (
-              <div key={n} className="rounded-xl bg-stone-50 p-4">
-                <div className="text-2xl font-black text-stone-900">{n}</div>
+              <div key={n} className="rounded-xl bg-stone-50 p-3 sm:p-4">
+                <div className="text-xl font-black text-stone-900 sm:text-2xl">{n}</div>
                 <div className="mt-1 font-medium text-stone-700">{t}</div>
               </div>
             ))}
@@ -125,10 +125,10 @@ export default function HomePage() {
         </div>
       </section>
 
-      <section className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+      <section className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
         {filtered.map((i) => (
           <Link key={i.id} href={`/items/${i.id}`} className="card card-tile overflow-hidden hover:shadow-md">
-            <div className="grid h-36 place-items-center bg-gradient-to-br from-stone-200 to-stone-100 text-5xl">
+            <div className="grid h-36 place-items-center overflow-hidden bg-gradient-to-br from-stone-200 to-stone-100 text-5xl">
               {i.photos[0] ? (
                 // eslint-disable-next-line @next/next/no-img-element
                 <img src={i.photos[0]} alt={i.title} className="h-full w-full object-cover" />
@@ -137,26 +137,26 @@ export default function HomePage() {
               )}
             </div>
             <div className="space-y-2 p-4">
-              <div className="flex items-center gap-2">
+              <div className="flex flex-wrap items-center gap-2">
                 <span className={`badge ${statusBadge(i.status)}`}>{i.status.replace("_", " ")}</span>
                 <span className="badge bg-stone-100 text-stone-600">{i.category}</span>
               </div>
-              <h3 className="font-bold leading-snug">{i.title}</h3>
-              <p className="text-sm text-stone-500">
+              <h3 className="break-words font-bold leading-snug">{i.title}</h3>
+              <p className="break-words text-sm text-stone-500">
                 {i.location} · by {i.donorName}
               </p>
-              <p className="line-clamp-2 text-sm text-stone-600">{i.description}</p>
-              <p className="text-xs italic text-stone-500">
+              <p className="line-clamp-2 break-words text-sm text-stone-600">{i.description}</p>
+              <p className="break-words text-xs italic text-stone-500">
                 “{i.originStory.slice(0, 90)}{i.originStory.length > 90 ? "…" : ""}”
               </p>
             </div>
           </Link>
         ))}
         {items === null && (
-          <div className="card p-10 text-center text-stone-500 sm:col-span-3">Loading items…</div>
+          <div className="card p-10 text-center text-stone-500 sm:col-span-2 lg:col-span-3">Loading items…</div>
         )}
         {items !== null && filtered.length === 0 && (
-          <div className="card p-10 text-center text-stone-500 sm:col-span-3">
+          <div className="card p-10 text-center text-stone-500 sm:col-span-2 lg:col-span-3">
             No items match. Be the first to{" "}
             <Link href="/list" className="font-semibold text-stone-900 underline">
               list one
